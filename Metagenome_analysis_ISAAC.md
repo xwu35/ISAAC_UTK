@@ -28,7 +28,7 @@ We will use conda to install most of the softwares. The advantage of using conda
 # 1. press ENTER to continue; 
 # 2. press q to quit reading terms; 
 # 3. Answer yes to the question: Do you accept the license terms? [yes|no]; 
-# 4. Copy the path you got above for the location. **DO NOT USE THE DEFAULT LOCATION**. 
+# 4. Copy the path you got above for the location. DO NOT USE THE DEFAULT LOCATION. 
 # 5. Answer yes to the question: Do you wish the installer to initialize Miniconda3 by running conda init? [yes|no]?
  bash Miniconda3-latest-Linux-x86_64.sh
 
@@ -76,7 +76,7 @@ checkm data setRoot database/checkm_database
 # deactivate metawrap-env environment
  conda deactivate
 ```
-### 2.3 Install gtdbtk for taxonomic annotation
+### 2.3 Install [`GTDB-Tk`](https://ecogenomics.github.io/GTDBTk/) for taxonomic annotation
 ```console
 conda create -n gtdbtk -c conda-forge -c bioconda gtdbtk
 conda activate gtdbtk
