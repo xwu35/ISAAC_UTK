@@ -126,6 +126,7 @@ emacs read_qc.sh
 ```
 Now copy and paste the following, remember to change email address. We will use the bigmem partition for most of the jobs here. The bigmem partition has bigger memory compare to the other partitions on ISAAC, but it only has 4 nodes, 48 cores per node, 1,536 GB memory per node. You can use bigmem for jobs that requires large memory usage, use other partitions for smaller jobs. ***NOTE: you can only run jobs for maximum 24 hours when use bigmem partition. The long-utk qos does not work for this partition***
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=bigmem
@@ -154,6 +155,7 @@ If you cannot follow the for loop at this point, you can run the command for eac
 emacs read_qc.sh
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=bigmem
@@ -176,6 +178,7 @@ You do not have to submit a job to do this step. You can run the commands on you
 emacs move_rename_clean_reads.sh 
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l nodes=1:ppn=2,walltime=1:00:00
@@ -206,6 +209,7 @@ We will co-assembly the two samples using megahit as it is much faster. You can 
 emacs assembly_megahit.sh
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=bigmem
@@ -249,6 +253,7 @@ You can also run metabat2, maxbin2 and concoct binning separately without using 
 emacs binning.sh  
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=bigmem
@@ -271,6 +276,7 @@ We will select bins with completeness >50% and contamination <10% (-c 50 -x 10).
 emacs binning_refinement.sh   
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=bigmem
@@ -297,6 +303,7 @@ cd ISAAC_UTK/binning_data_files # change to the directory containing the binning
 emacs bin_abundance.sh    
 ```
 ```  
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=bigmem
@@ -321,6 +328,7 @@ We will use gtdbtk to assign taxonomy. gtdbtk uses [GTDB database](https://gtdb.
 emacs gtdbtk.sh 
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=beacon
@@ -343,6 +351,7 @@ Here we will use hmmsearch to annotate bins against PFAM database. First we will
 emacs prodigal_bins.sh 
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=bigmem
@@ -371,6 +380,7 @@ Search amino acid sequences with HMMER against the Pfam database
 emacs hmmsearch_pfam.sh
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=bigmem
@@ -395,6 +405,7 @@ The good thing of using PROKKA is that it does both gene prediction and annotati
 emacs prokka.sh
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l nodes=1:ppn=8,walltime=4:00:00
@@ -419,6 +430,7 @@ Alternatively, we can use the metawrap annotate_bins module which also uses PROK
 emacs metawrap_annotate_bins.sh
 ```
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l nodes=1:ppn=8,walltime=5:00:00

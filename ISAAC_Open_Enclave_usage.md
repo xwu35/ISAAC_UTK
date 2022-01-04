@@ -82,6 +82,7 @@ module unload trimmomatic/0.36
 
 The format of your scripts:
 ```console
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l qos=campus
@@ -98,6 +99,7 @@ emacs create_directories.sh
 ```
 Then you can copy and paste the following. DO NOT forget to change the email address section. You can use the up, down, left and right arrows on your keyboard to go to the location where you want to edit, e.g. email address. Press control + x + s to save your script file and control + z to quit the editor.
 ```
+#!/bin/sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l qos=campus
