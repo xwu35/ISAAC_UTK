@@ -23,7 +23,13 @@ We will use conda to install most of the softwares. The advantage of using conda
 # download miniconda3
  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-# install miniconda3. You just need to follow the instruction on the screen when you run the command below. Steps during the installation: 1. press ENTER to continue; 2. press q to quit reading terms; 3. Answer yes to the question: Do you accept the license terms? [yes|no]; 4. Copy the path you got above for the location. **DO NOT USE THE DEFAULT LOCATION**. 5. Answer yes to the question: Do you wish the installer to initialize Miniconda3 by running conda init? [yes|no]?
+# install miniconda3. You just need to follow the instruction on the screen when you run the command below. 
+# Steps during the installation: 
+# 1. press ENTER to continue; 
+# 2. press q to quit reading terms; 
+# 3. Answer yes to the question: Do you accept the license terms? [yes|no]; 
+# 4. Copy the path you got above for the location. **DO NOT USE THE DEFAULT LOCATION**. 
+# 5. Answer yes to the question: Do you wish the installer to initialize Miniconda3 by running conda init? [yes|no]?
  bash Miniconda3-latest-Linux-x86_64.sh
 
 # now you have installed conda. You can use the following to check the path to conda. You should get output like this:/lustre/haven/user/your_username/miniconda3/condabin/conda
