@@ -414,7 +414,7 @@ submit after binning_refinement is completed
 qsub prokka.sh 
 ```
 
-Alternatively, we can use the metawrap annotate_bins module which uses PROKKA for functional annotation on the bins
+Alternatively, we can use the metawrap annotate_bins module which also uses PROKKA for functional annotation on the bins
 ```console
 emacs metawrap_annotate_bins.sh
 ```
