@@ -76,7 +76,7 @@ checkm data setRoot database/checkm_database
 # deactivate metawrap-env environment
  conda deactivate
 ```
-### 2.3 Install [`GTDB-Tk`](https://ecogenomics.github.io/GTDBTk/) for taxonomic annotation
+### 2.3 Install [GTDB-Tk](https://ecogenomics.github.io/GTDBTk/) for taxonomic annotation
 ```console
 conda create -n gtdbtk -c conda-forge -c bioconda gtdbtk
 conda activate gtdbtk
