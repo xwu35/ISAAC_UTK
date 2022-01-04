@@ -152,7 +152,7 @@ The default partitions are general, beacon and rho. If you do not specify which 
 | Cascade Lake with GPU (Coming Aug 2021) | Gold 6248R V100S GPU    | 4     | 48         | 192         | 192         | EDR          |
 | Totals                                  |                         | 303   |            |             | 8,584       |              |
 
-## 11. Walltime with [default project UTK0011](https://oit.utk.edu/hpsc/isaac-open/using-qos-private-condo/) 
+## 11. Walltime with default project UTK0011
 
 Default QoS is campus which only allows 24 hours walltime. You can change it to long-utk for 72 hours walltime. If you have a condo project, you can specify qos as condo for 28 days walltime.
 ```console
