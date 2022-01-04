@@ -37,6 +37,8 @@ scp -r FILE_ON_YOUR_LOCAL_COMPUTER your_username@datamover4.nics.utk.edu:THE_PAT
 * Web-based Transfers: Globus (according to ISAAC website, Globus is the fastest and most efficient data transfer method available on the Open Enclave). 
 
 ## 4. Transfer files between clusters on ISAAC
+
+Do the following when you are logged into ISAAC.
 ```console
 # from Next Gen to Open Enclave
 scp -r dtn1.isaac.utk.edu:/lustre/isaac/scratch/your_username /lustre/haven/user/your_username
@@ -72,6 +74,9 @@ module avail trimmomatic
 
 # load the software you want to use
 module load trimmomatic/0.36
+
+# unload the software
+module unload trimmomatic/0.36
 ```
 ## 8. Submitting a job
 
