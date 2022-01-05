@@ -130,7 +130,7 @@ First use emacs to create script files:
 ```console
 emacs read_qc.sh
 ```
-Now copy and paste the following, remember to change email address. We will use the bigmem partition for most of the jobs here. The bigmem partition has bigger memory compare to the other partitions on ISAAC, but it only has 4 nodes, 48 cores per node, 1,536 GB memory per node. You can use bigmem for jobs that requires large memory usage, use other partitions for smaller jobs. ***NOTE: you can only run jobs for maximum 24 hours when use bigmem partition. The long-utk qos does not work for this partition***
+Now copy and paste the following, remember to change email address. We will use the bigmem partition for most of the jobs here. The bigmem partition has bigger memory compare to the other partitions on ISAAC, but it only has 4 nodes, 48 cores per node, 1,536 GB memory per node. You can use bigmem for jobs that requires large memory usage, use other partitions for smaller jobs. ***NOTE: you can only run jobs for maximum 24 hours when using bigmem partition. The long-utk qos does not work for this partition***
 ```
 #!/bin/sh
 #PBS -S /bin/bash
