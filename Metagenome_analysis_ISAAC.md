@@ -95,7 +95,7 @@ cd metagenome_workshop
 
 # you can always use 'pwd' to check the path
 
-# download the repository. The binning step takes a bit long, so later we will use the binning files from the repository.
+# download the repository. The binning step takes a bit long, so later we will use the binning results from the repository.
 git clone https://github.com/xwu35/ISAAC_UTK.git
 ```
 ### 3.1 download sequencing data
@@ -122,7 +122,7 @@ cd ..
 
 metaWRAP read_qc command does three things: 1. check quality of the raw reads using [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/); 2. remove adapters and low-quality reads using [Cutadapt](https://cutadapt.readthedocs.io/en/stable/); 3. check quality of trimmed reads/clean reads using FastQC. You can always run those steps separately using the corresponding softwares. 
 
-***Note: The read files must end with _1.fastq and _2.fastq to use metawrap ***
+***Note: The read files must end with _1.fastq and _2.fastq to use metawrap***
 
 **Replace the email address with your own, so you can get emails about your job when it begins, ends and aborts due to abnormal execution**
 
