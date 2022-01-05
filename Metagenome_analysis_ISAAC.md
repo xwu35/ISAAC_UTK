@@ -338,7 +338,7 @@ emacs gtdbtk.sh
 #PBS -S /bin/bash
 #PBS -A ACF-UTK0011
 #PBS -l partition=beacon
-#PBS -l nodes=1:ppn=16,walltime=4:00:00
+#PBS -l nodes=1:ppn=16,walltime=24:00:00
 #PBS -m abe 
 #PBS -M your_email_address
 cd $PBS_O_WORKDIR 
@@ -407,8 +407,9 @@ qsub hmmsearch_pfam.sh
 
 The good thing of using PROKKA is that it does both gene prediction and annotation. PROKKA is not designed for metagenomes, but it does work on them. There was an issue that discussed [here](https://github.com/tseemann/prokka/issues/203) when using PROKKA on metagenomes. We will use the prokka that installed as metawrap dependency. 
 
+Annotate bacterial bins.
 ```console
-emacs prokka.sh
+emacs prokka_bacteria.sh
 ```
 ```
 #!/bin/sh
@@ -420,15 +421,36 @@ emacs prokka.sh
 cd $PBS_O_WORKDIR 
 conda activate metawrap-env # we need to activate metawrap environment to use PROKKA 
 mkdir prokka
-for s in BIN_REFINEMENT/metawrap_50_10_bins/*.fa;do # NOTE here we use contig sequences of each bin, not the protein sequences of genes got from prodigal
-prokka --outdir prokka/$(basename $s .fa) --prefix $(basename $s .fa) --metagenome $s --cpus 8 --kingdom bacteria
+for s in BIN_REFINEMENT/metawrap_50_10_bins/bin.{2,3,4,5,6}.fa;do # NOTE here we use contig sequences of each bin, not the protein sequences of genes got from prodigal
+prokka --outdir prokka/$(basename $s .fa) --prefix $(basename $s .fa) --metagenome $s --cpus 8 --kingdom Bacteria # kingdom is Bacteria by default
 done
 ```
-***NOTE: SHOULD SPECIFY --kingdom for archaea if it is an archaeal genome, the bins we got here are bacteria, so you can just use the default one***
-
 submit after binning_refinement is completed
 ```console
-qsub prokka.sh 
+qsub prokka_bacteria.sh 
+```
+
+We have 1 archaeal bin (bin.1.fa) based on GTDB-Tk results. Annotate archaeal bin. 
+```console
+emacs prokka_archaea.sh
+```
+```
+#!/bin/sh
+#PBS -S /bin/bash
+#PBS -A ACF-UTK0011
+#PBS -l nodes=1:ppn=8,walltime=4:00:00
+#PBS -m abe 
+#PBS -M your_email_address
+cd $PBS_O_WORKDIR 
+conda activate metawrap-env # we need to activate metawrap environment to use PROKKA 
+mkdir prokka 
+for s in BIN_REFINEMENT/metawrap_50_10_bins/bin.1.fa;do # NOTE here we use contig sequences of each bin, not the protein sequences of genes got from prodigal
+prokka --outdir prokka/$(basename $s .fa) --prefix $(basename $s .fa) --metagenome $s --cpus 8 --kingdom Archaea # kingdom changed to Archaea
+done
+```
+submit after binning_refinement is completed
+```console
+qsub prokka_archaea.sh
 ```
 
 Alternatively, we can use the metawrap annotate_bins module which also uses PROKKA for functional annotation on the bins
