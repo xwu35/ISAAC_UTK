@@ -48,7 +48,7 @@ cd # if you just type 'cd', then you will go back to your home directory /Users/
 
 ## 2. Files
 
-#### Creat a file: `cat` *concatenate* or `touch`
+#### Create a file: `cat` *concatenate* or `touch`
 ```bash
 cd test # first we change to test directory
 mkdir fun # create another directory called fun inside the test directory. We will use this one later.
