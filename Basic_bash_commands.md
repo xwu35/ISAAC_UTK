@@ -57,7 +57,7 @@ cat > my_file.txt # after you execute this command, type 'this is the first line
 
 # another option to create file using touch and then write into the file using echo
 touch my_second_file.txt
-# echo: print text or string data into terminal or anothe command
+# echo: print text or string data into terminal or another command
 echo "this is the first line of my second file" > my_second_file.txt 
 ```
 #### View file contents: `cat` or `less`

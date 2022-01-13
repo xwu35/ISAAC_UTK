@@ -71,7 +71,7 @@ checkm data setRoot     # CheckM will prompt to to chose your storage location: 
 # If the above did not work, you can try:
 checkm data setRoot database/checkm_database
 
-# There are other databases you need to download if you do other steps that are not included here, such as kraken database for taxonomic annotation.  
+# NOTE: if you do other metawrap steps that are not included here, you need to download additional databases, such as kraken database for taxonomic annotation.  
 
 # deactivate metawrap-env environment
  conda deactivate
