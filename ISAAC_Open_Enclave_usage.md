@@ -19,7 +19,7 @@ pwd # Output is your home directory path. It should be similar to /nics/c/home/y
 
 There are several methods to transfer files between remote server (such as ISAAC Open Enclave) and your local computer. See more details [here](https://oit.utk.edu/hpsc/isaac-open/data-transfer/) 
 
-* `scp` Do the following in your local computer terminal, do not need to log into the server.
+* `scp` Do the following in your local computer terminal, do not need to log into ISAAC.
 
 ```console
 # from ISAAC to your local computer

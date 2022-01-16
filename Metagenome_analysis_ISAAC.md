@@ -231,7 +231,7 @@ Submit the assembly job after move_rename_clean_reads is completed. The job shou
 ```console
 qsub assembly_megahit.sh
 ```
-Now let's we will have a look at the contig sequences. You will see taht each contig name starts with ">". Press 'q' to quit viewing
+Now let's have a look at the contig sequences. You will see that each contig name starts with ">". Press 'q' to quit viewing
 ```console
 less ASSEMBLY_megahit/final_assembly.fasta
 ```
@@ -242,7 +242,7 @@ grep ">" ASSEMBLY_megahit/final_assembly.fasta > contig_names.txt
 # if we want to count how many lines/contigs
 grep ">" ASSEMBLY_megahit/final_assembly.fasta | wc -l
 ```
-You will see all the contig names in this file.
+You can see all the contig names in this file.
 ```console
 less contig_names.txt
 ```
