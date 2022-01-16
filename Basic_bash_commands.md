@@ -25,13 +25,11 @@ ls -a # list all the files including the hidden ones
 ```
 
 #### Enter a directory: `cd` *change directory*
-
 ```bash
 cd Desktop # change to Desktop directory
 ```
 
 #### Create a directory: `mkdir` *make directory*
-
 ```bash
 mkdir test # create a directory called test. You should see this test folder on your desktop now if you did type 'cd Desktop' above
 cd test # enter the test directory
