@@ -80,8 +80,12 @@ checkm data setRoot database/checkm_database
 conda create -n gtdbtk -c conda-forge -c bioconda gtdbtk
 conda activate gtdbtk
 
-# download the reference data
+# download the reference data automatically
 download-db.sh 
+
+# if it takes too long to download the refernce data using the above command, then we can copy the ones already downloaded on ISAAC
+cp /sw/cs400_centos7.3_acfsoftware/gtdbtk/1.5.0/centos7.6_binary/data/gtdbtk_data.tar.gz database
+tar -zxvf database/gtdbtk_data.tar.gz 
 ```
 ## 3. Metagenome analysis 
 
@@ -119,17 +123,17 @@ cd ..
 ```
 ### 3.2 quality control and reads trimming
 
-metaWRAP read_qc command does three things: 1. check quality of the raw reads using [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/); 2. remove adapters and low-quality reads using [Cutadapt](https://cutadapt.readthedocs.io/en/stable/); 3. check quality of trimmed reads/clean reads using FastQC. You can always run those steps separately using the corresponding softwares. 
+metaWRAP read_qc command does three things: 1. check quality of the raw reads using [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/); 2. remove adapters and low-quality reads using [Cutadapt](https://cutadapt.readthedocs.io/en/stable/); 3. check quality of trimmed reads/clean reads using FastQC. You can always run these steps separately using the corresponding software. 
 
-***Note: The read files must end with _1.fastq and _2.fastq to use metawrap***
+***Note: In order to use metaWRAP, the read files must end with _1.fastq and _2.fastq***
 
 **Replace the email address with your own, so you can get emails about your job when it begins, ends and aborts due to abnormal execution**
 
-First use emacs to create script files:
+First use emacs to create script file:
 ```console
 emacs read_qc.sh
 ```
-Now copy and paste the following, remember to change email address. We will use the bigmem partition for most of the jobs here. The bigmem partition has bigger memory compare to the other partitions on ISAAC, but it only has 4 nodes, 48 cores per node, 1,536 GB memory per node. You can use bigmem for jobs that requires large memory usage, use other partitions for smaller jobs. ***NOTE: you can only run jobs for maximum 24 hours when using bigmem partition. The long-utk qos does not work for this partition***
+Now copy and paste the following, remember to change email address. We will use the bigmem partition for most of the jobs here. The bigmem partition has a bigger memory compare to the other partitions on ISAAC, but it only has 4 nodes, 48 cores per node, 1,536 GB memory per node. You can use bigmem for jobs that requires large memory usage and use other partitions for smaller jobs. ***NOTE: you can only run jobs for maximum 24 hours when using bigmem partition. The long-utk qos does not work for this partition***
 ```
 #!/bin/sh
 #PBS -S /bin/bash
@@ -147,7 +151,7 @@ done
 ```
 Save the file by pressing control + x + s, and then control + z to quit. you will do the same for the following scripts editing.
 
-We use for loop above to run the read_qc command. The for loop means the read_qc command will run for each sequence file within RAW_READS directory. '-1 $s': indicate the forward sequences; '-2 ${s/_1.fastq/_2.fastq}': replace the file extension _1.fastq with _2.fastq for the reverse sequences; '$(basename $s _1.fastq)': only want to use the names before _1.fastq as output folder. If you do not know what this replacement means, you can alwasy use echo to print it out and see what has been changed.
+We use `for` loop above to run the read_qc command. The `for` loop means the read_qc command will run for each sequence file within the RAW_READS directory. '-1 $s': indicate the forward sequences; '-2 ${s/_1.fastq/_2.fastq}': replace the file extension _1.fastq with _2.fastq for the reverse sequences; '$(basename $s _1.fastq)': only want to use the names before _1.fastq as output folder. If you do not know what this replacement means, you can alwasy use `echo` to print it out and see what has been changed.
 ```console
 for s in RAW_READS/ERR*_1.fastq; do 
 echo $s
@@ -178,7 +182,7 @@ Submit the job. The job should finish in ~12 min after the job starts with 8 cor
 qsub read_qc.sh
 ```
 ### 3.3 rename clean reads
-You do not have to submit a job to do this step. You can run the commands on your login node as it is a small job, but you can run it as dependency job this way.
+You do not have to submit a job to do this step. You can run the commands on your login node as it is a small job, but you can run it as a dependency job this way.
 ```console
 emacs move_rename_clean_reads.sh 
 ```
@@ -197,7 +201,7 @@ mv ${i}/final_pure_reads_1.fastq CLEAN_READS/${b}_1.fastq
 mv ${i}/final_pure_reads_2.fastq CLEAN_READS/${b}_2.fastq
 done
 ```
-You can only submit this job after the read_qc job is completed, because you need the output file from read_qc. Another option is that you can submit it as a dependency job, so you can just let your jobs run one after another without keeping an eye on it all the time. You might want to do some debbugging to make sure your scripts ara working, otherwise your dependency jobs will be cancelled if the previous job failed.
+You can only submit this job after the read_qc job is completed, because you need the output file from read_qc. Another option is that you can submit it as a dependency job, so you can just let your jobs run one after another without keeping an eye on it all the time. You might want to do some debbugging to make sure your scripts are working, otherwise your dependency jobs will be cancelled if the previous job failed.
 
 Option 1: submit move_rename_clean_reads.sh after read_qc is completed
 ```console
@@ -209,7 +213,7 @@ qusb -W depend=afterok:jobid_of_read_qc.sh move_rename_clean_reads.sh
 ```
 ### 3.4 assembly with megahit
 
-We will co-assembly the two samples using megahit as it is much faster. You can also replace --megahit with --metaspades to use metaspades as the assembler. Metaspades has better performance, but it takes very long for large datasets. You can also run [megahit](https://github.com/voutcn/megahit) or [metaspapdes](https://github.com/ablab/spades) on your own without using metawrap command. metawrap assembly here does two steps: 1. assembly with `megahit`; 2. contig quality evaluation using `quast`.
+We will co-assembly the two samples using megahit as it is much faster. You can also replace --megahit with --metaspades to use metaspades as the assembler. Metaspades has better performance, but it takes very long for large datasets. You can also run [megahit](https://github.com/voutcn/megahit) or [metaspapdes](https://github.com/ablab/spades) on your own without using metawrap command. Metawrap assembly here does two steps: 1. assembly with `megahit`; 2. contig quality evaluation using `quast`.
 ```console
 emacs assembly_megahit.sh
 ```
@@ -328,7 +332,6 @@ qsub bin_abundance.sh
 ### 3.8 taxonomic classification [`gtdbtk`](https://ecogenomics.github.io/GTDBTk/) 
 
 We will use gtdbtk to assign taxonomy. gtdbtk uses [GTDB database](https://gtdb.ecogenomic.org/)
-
 ```console
 emacs gtdbtk.sh 
 ```
@@ -342,6 +345,8 @@ emacs gtdbtk.sh
 #PBS -M your_email_address
 cd $PBS_O_WORKDIR 
 conda activate gtdbtk
+# we need to export the GTDBTK_DATA_PATH since the reference data was not downloaded automatically (we copied it from ISAAC's pre-installation.
+export GTDBTK_DATA_PATH=/lustre/haven/user/your_username/database/gtdbtk_data # don't forget to replace 'your_username' with your own. 
 gtdbtk classify_wf --cpus 1 --genome_dir BIN_REFINEMENT/metawrap_50_10_bins --out_dir gtdbtk_output --extension fa --pplacer_cpus 1
 ```
 Submit after binning_refinement is completed
@@ -350,8 +355,7 @@ qsub gtdbtk.sh
 ```
 ### 3.9 functional annotation using `hmmsearch`
 
-Here we will use hmmsearch to annotate bins against PFAM database. First we will use `prodigal` to predict genes for each bin.
-
+Here we will use `hmmsearch` to annotate bins against PFAM database. First we will use `prodigal` to predict genes for each bin.
 ```console
 emacs prodigal_bins.sh 
 ```
@@ -452,7 +456,7 @@ submit after binning_refinement is completed
 qsub prokka_archaea.sh
 ```
 
-Alternatively, we can use the metawrap annotate_bins module which also uses PROKKA for functional annotation on the bins
+Alternatively, we can use the metawrap annotate_bins module which also uses PROKKA for functional annotation on the bins.
 ```console
 emacs metawrap_annotate_bins.sh
 ```
