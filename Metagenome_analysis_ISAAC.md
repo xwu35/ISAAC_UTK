@@ -83,7 +83,7 @@ conda activate gtdbtk
 # download the reference data automatically
 download-db.sh 
 
-# if it takes too long to download the refernce data using the above command, then we can copy the ones already downloaded on ISAAC
+# if it takes too long to download the refernce data using the above command, you can copy the data files from ISAAC.
 cp /sw/cs400_centos7.3_acfsoftware/gtdbtk/1.5.0/centos7.6_binary/data/gtdbtk_data.tar.gz database
 tar -zxvf database/gtdbtk_data.tar.gz 
 ```
