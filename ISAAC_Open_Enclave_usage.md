@@ -6,7 +6,7 @@ These are some common usages of [ISAAC Open Enclave](https://oit.utk.edu/hpsc/is
 
 UTK0011 is the default project for all users. If your group has a project on ISAAC, you can ask your PI to add you or you can make a request from this [website](https://portal.nics.utk.edu/accounts/login/), so you have access to the project directory. 
 
-## 2. Login 
+## 2. Log into ISAAC
 ```console
 ssh your_username@acf-login.acf.tennessee.edu
 ```
