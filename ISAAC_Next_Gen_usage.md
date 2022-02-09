@@ -1,6 +1,6 @@
 ## Description
 
-These are some common usages of [ISAAC Next Gen](https://oit.utk.edu/hpsc/isaac-open-enclave-new-kpb/system-overview-cluster-at-kpb/) (ISAAC-NG) at University of Tennessee. ISAAC-NG uses SLURM scheduler.
+These are some common usages of [ISAAC Next Gen cluster](https://oit.utk.edu/hpsc/isaac-open-enclave-new-kpb/system-overview-cluster-at-kpb/) (ISAAC-NG) at University of Tennessee. ISAAC-NG uses SLURM scheduler.
 
 ## 1. Request an account on ISAAC [here](https://portal.acf.utk.edu/user_requests/new_user/welcome/)
 
