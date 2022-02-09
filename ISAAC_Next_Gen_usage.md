@@ -90,8 +90,8 @@ The format of your scripts. You can find detailed information [here](https://oit
 #SBATCH --error=MyJobName.e%J         # Errors will be written in this file
 #SBATCH --output=MyJobName.o%J        # The output of the terminal will be written in this file
 #SBATCH --qos=campus
-#SBATCH --mail-user=your_email_address
-#SBATCH --mail-type=ALL
+#SBATCH --mail-user=your_email_address   # Email address to receive notifications about submitted job
+#SBATCH --mail-type=ALL                  # Get email notification when the job begins, ends and aborts.
 your_commands_here
 ```
 You can use text editors, such as emacs, nano or vim, to edit your scripts. The following is an example using emacs. First you create the script file with emacs. 
