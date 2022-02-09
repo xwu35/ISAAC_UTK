@@ -2,6 +2,8 @@
 
 This file is to show you how to analyse metagenomes on ISAAC Open Legacy using part of the [metaWRAP](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) pipeline as it has a very detailed guide for you to look into. 
 
+**NOTE: The scheduler and workload manager on ISAAC Open Legacy cluster will be replaced with SLURM on June 30, 2022. You will have to submit SLURM based jobs from July 2022. You may follow instructions in ISAAC_Next_Gen_usage.md to create and submit SLURM jobs.**
+
 ## 1. Log into ISAAC Open Legacy
 ```console
 ssh your_username@acf-login.acf.tennessee.edu
