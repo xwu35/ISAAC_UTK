@@ -22,10 +22,10 @@ There are several methods to transfer files between remote server and your local
 * `scp` Do the following in your local computer terminal, do not need to log into ISAAC.
 
 ```console
-# from ISAAC to your local computer
+# from ISAAC-NG to your local computer
 scp -r your_username@dtn1.isaac.utk.edu:THE_PATH_TO_THE_FILE_YOU_WANT_TO_TRANSFER ./Desktop  
 
-# from your local computer to ISAAC
+# from your local computer to ISAAC-NG
 scp -r FILE_ON_YOUR_LOCAL_COMPUTER your_username@dtn1.isaac.utk.edu:THE_PATH_OF_DESTINATION   
 ```
 
