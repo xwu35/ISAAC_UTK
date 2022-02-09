@@ -1,12 +1,14 @@
 ## Description
 
-These are some common usages of [ISAAC Open Enclave](https://oit.utk.edu/hpsc/isaac-open/) server at University of Tennessee. The usage of another cluster [ISAAC Next Gen](https://oit.utk.edu/hpsc/isaac-open-enclave-new-kpb/system-overview-cluster-at-kpb/) that uses SLURM scheduler is not included here.
+These are some common usages of [ISAAC Open Legacy cluster](https://oit.utk.edu/hpsc/isaac-open/) (ISAAC-Legacy) at University of Tennessee. The usage of another cluster [ISAAC Next Gen](https://oit.utk.edu/hpsc/isaac-open-enclave-new-kpb/system-overview-cluster-at-kpb/) that uses SLURM scheduler can be found in ISAAC_Next_Gen_usage.md.
+
+**NOTE: The scheduler and workload manager on ISAAC Open Legacy cluster will be replaced with SLURM on June 30, 2022. You will have to submit SLURM based jobs from July 2022. You may follow instructions in ISAAC_Next_Gen_usage.md to create and submit SLURM jobs.**
 
 ## 1. Request an account on ISAAC [here](https://portal.acf.utk.edu/user_requests/new_user/welcome/)
 
 UTK0011 is the default project for all users. If your group has a project on ISAAC, you can ask your PI to add you or you can make a request from this [website](https://portal.nics.utk.edu/accounts/login/), so you have access to the project directory. 
 
-## 2. Log into ISAAC
+## 2. Log into ISAAC Open Legacy cluster
 ```console
 ssh your_username@acf-login.acf.tennessee.edu
 ```
@@ -15,17 +17,17 @@ pwd # Output is your home directory path. It should be similar to /nics/c/home/y
 ```
 ***NOTE: Your home directory only has 10 GB storage space, so DO NOT use your home directory for analysis, use the scratch directory (see below)***
 
-## 3. Transfer files between ISAAC Open Enclave and your local computer 
+## 3. Transfer files between ISAAC Open Legacy and your local computer 
 
-There are several methods to transfer files between remote server (such as ISAAC Open Enclave) and your local computer. See more details [here](https://oit.utk.edu/hpsc/isaac-open/data-transfer/) 
+There are several methods to transfer files between remote server (such as ISAAC Open Legacy) and your local computer. See more details [here](https://oit.utk.edu/hpsc/isaac-open/data-transfer/) 
 
 * `scp` Do the following in your local computer terminal, do not need to log into ISAAC.
 
 ```console
-# from ISAAC to your local computer
+# from ISAAC-Legacy to your local computer
 scp -r your_username@datamover4.nics.utk.edu:THE_PATH_TO_THE_FILE_YOU_WANT_TO_TRANSFER ./Desktop  
 
-# from your local computer to ISAAC
+# from your local computer to ISAAC-Legacy
 scp -r FILE_ON_YOUR_LOCAL_COMPUTER your_username@datamover4.nics.utk.edu:THE_PATH_OF_DESTINATION   
 ```
 
@@ -34,16 +36,16 @@ scp -r FILE_ON_YOUR_LOCAL_COMPUTER your_username@datamover4.nics.utk.edu:THE_PAT
   - Download [WinSCP](https://winscp.net/eng/download.php)
   - Choose SFTP for File Protocol, Host name: datamover4.nics.utk.edu; Port number: 22; User name: NetID, Password: password for NetID 
 
-* Web-based Transfers: Globus (according to ISAAC website, Globus is the fastest and most efficient data transfer method available on the Open Enclave). 
+* Web-based Transfers: Globus (according to ISAAC website, Globus is the fastest and most efficient data transfer method available on the Open Legacy). 
 
 ## 4. Transfer files between clusters on ISAAC
 
 Do the following when you are logged into ISAAC.
 ```console
-# from Next Gen to Open Enclave
+# from Next Gen to Open Legacy
 scp -r dtn1.isaac.utk.edu:/lustre/isaac/scratch/your_username /lustre/haven/user/your_username
 
-# from Open Enclave to Next Gen
+# from Open Legacy to Next Gen
 scp -r datamover4.nics.utk.edu:/lustre/haven/user/your_username /lustre/isaac/scratch/your_username 
 ```
 ## 5. Go to scratch directory

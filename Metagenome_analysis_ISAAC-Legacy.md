@@ -1,8 +1,8 @@
 ## Description
 
-This file is to show you how to analyse metagenomes on ISAAC using part of the [metaWRAP](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) pipeline as it has a very detailed guide for you to look into. 
+This file is to show you how to analyse metagenomes on ISAAC Open Legacy using part of the [metaWRAP](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) pipeline as it has a very detailed guide for you to look into. 
 
-## 1. Log into ISAAC Open Enclave
+## 1. Log into ISAAC Open Legacy
 ```console
 ssh your_username@acf-login.acf.tennessee.edu
 
@@ -303,7 +303,6 @@ qsub binning_refinement.sh
 ### 3.7 bin abundance calculation
 
 We will not wait for binning.sh and binning_refinement.sh to finish as they will take a while. We will use the output data we downloaded earlier
-
 ```console
 cd ISAAC_UTK/binning_data_files # change to the directory containing the binning files. If you want to use the output file from your binning_refinement job, then do not use this command
 ```
