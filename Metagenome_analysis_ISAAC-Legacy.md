@@ -347,7 +347,7 @@ emacs gtdbtk.sh
 cd $PBS_O_WORKDIR 
 conda activate gtdbtk
 # we need to export the GTDBTK_DATA_PATH since the reference data was not downloaded automatically (we copied it from ISAAC's pre-installation.
-export GTDBTK_DATA_PATH=/lustre/haven/user/your_username/database/gtdbtk_data # don't forget to replace 'your_username' with your own. 
+export GTDBTK_DATA_PATH=/lustre/haven/user/your_username/database/release202 # don't forget to replace 'your_username' with your own. 
 gtdbtk classify_wf --cpus 1 --genome_dir BIN_REFINEMENT/metawrap_50_10_bins --out_dir gtdbtk_output --extension fa --pplacer_cpus 1
 ```
 Submit after binning_refinement is completed
@@ -398,6 +398,7 @@ emacs hmmsearch_pfam.sh
 #PBS -m abe 
 #PBS -M your_email_address
 cd $PBS_O_WORKDIR
+module load hmmer/3.1b2
 mkdir pfam
 for s in prodigal/*.aa.fa;do
 hmmsearch --tblout pfam/$(basename $s .aa.fa)_hmmsearch.txt -E 1e-5 --cpu 8 Pfam-A.hmm $s
