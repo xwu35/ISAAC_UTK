@@ -24,17 +24,17 @@ There are several methods to transfer files between remote server (such as ISAAC
 * `scp` Do the following in your local computer terminal, do not need to log into ISAAC.
 
 ```console
-# from ISAAC-Legacy to your local computer
-scp -r your_username@datamover4.nics.utk.edu:THE_PATH_TO_THE_FILE_YOU_WANT_TO_TRANSFER ./Desktop  
+# from ISAAC-Legacy to your local computer's Desktop
+scp -r your_username@datamover1.nics.utk.edu:THE_PATH_TO_THE_FILE_YOU_WANT_TO_TRANSFER ./Desktop # you can also use datamover2.nics.utk.edu or datamover3.nics.utk.edu
 
 # from your local computer to ISAAC-Legacy
-scp -r FILE_ON_YOUR_LOCAL_COMPUTER your_username@datamover4.nics.utk.edu:THE_PATH_OF_DESTINATION   
+scp -r FILE_ON_YOUR_LOCAL_COMPUTER your_username@datamover1.nics.utk.edu:THE_PATH_OF_DESTINATION   # you can also use datamover2.nics.utk.edu or datamover3.nics.utk.edu
 ```
 
 * Softwares, e.g. WinSCP for Windows and CYBERDUCK for Mac
 
   - Download [WinSCP](https://winscp.net/eng/download.php)
-  - Choose SFTP for File Protocol, Host name: datamover4.nics.utk.edu; Port number: 22; User name: NetID, Password: password for NetID 
+  - Choose SFTP for File Protocol, Host name: datamover1.nics.utk.edu; Port number: 22; User name: NetID, Password: password for NetID 
 
 * Web-based Transfers: Globus (according to ISAAC website, Globus is the fastest and most efficient data transfer method available on the Open Legacy). 
 
