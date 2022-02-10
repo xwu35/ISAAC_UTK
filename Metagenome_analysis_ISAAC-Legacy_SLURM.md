@@ -98,9 +98,6 @@ mkdir metagenome_workshop
 cd metagenome_workshop
 
 # you can always use 'pwd' to check the path
-
-# download the repository. The binning step takes a bit long, so later we will use the binning results from the repository.
-git clone https://github.com/xwu35/ISAAC_UTK.git
 ```
 ### 3.1 download sequencing data
 
@@ -320,11 +317,6 @@ Submit after metawrap_binning is completed. ~1 hour run
 sbatch binning_refinement.sh
 ```
 ### 3.7 bin abundance calculation
-
-We will not wait for binning.sh and binning_refinement.sh to finish as they will take a while. We will use the output data we downloaded earlier
-```console
-cd ISAAC_UTK/binning_data_files # change to the directory containing the binning files. If you want to use the output file from your binning_refinement job, then do not use this command
-```
 
 ```console
 emacs bin_abundance.sh    
